@@ -1,4 +1,4 @@
 CmCmsBundle
 ===========
 
-Service for sending SMS messages to  
+Service for sending SMS messages to cmtelecom.com
