@@ -22,6 +22,12 @@ class CmSmsService
 
     public function send($senderName, $body, $number, $tariff = 0)
     {
+        $number = str_replace("+", "", $number);//remove begining plus sign
+        if (substr($number, 0, 2) != "00") {
+            $number = "00" . $number;
+        }
+
+
         $xmlToSend = $this->createMessage(
             $this->customerId,
             $this->username,
