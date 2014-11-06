@@ -40,35 +40,35 @@ class CmSmsService
         return true;
     }
 
-    private function createMessage($CustomerID, $Login, $Password, $Tariff, $SenderName, $Body, $msisdn)
+    private function createMessage($customerId, $login, $password, $tariff, $senderName, $body, $msisdn)
     {
         $xmlSms = new \SimpleXMLElement('<MESSAGES/>');
         $xmlSms->addAttribute('PID', 25);
         $xmlSms->addChild('CUSTOMER');
-        $xmlSms->{"CUSTOMER"}->addAttribute('ID', $CustomerID);
+        $xmlSms->{"CUSTOMER"}->addAttribute('ID', $customerId);
         $xmlSms->addChild('USER');
-        $xmlSms->{"USER"}->addAttribute('LOGIN', $Login);
-        $xmlSms->{"USER"}->addAttribute('PASSWORD', $Password);
+        $xmlSms->{"USER"}->addAttribute('LOGIN', $login);
+        $xmlSms->{"USER"}->addAttribute('PASSWORD', $password);
         $xmlSms->addChild('TARIFF');
-        $xmlSms->{"TARIFF"} = $Tariff;
+        $xmlSms->{"TARIFF"} = $tariff;
         $xmlSms->addChild('MSG');
         $xmlSms->{"MSG"}->addChild('FROM');
-        $xmlSms->{"MSG"}->FROM = $SenderName;
+        $xmlSms->{"MSG"}->FROM = $senderName;
         $xmlSms->{"MSG"}->addChild('BODY');
-        $xmlSms->{"MSG"}->BODY = $Body;
+        $xmlSms->{"MSG"}->BODY = $body;
         $xmlSms->{"MSG"}->addChild('TO');
         $xmlSms->{"MSG"}->TO = $msisdn;
         return $xmlSms->asXML();
     }
 
-    private function sendMessage($URL, $Message)
+    private function sendMessage($url, $message)
     {
         $cHandle = curl_init();
-        curl_setopt($cHandle, CURLOPT_URL, $URL);
+        curl_setopt($cHandle, CURLOPT_URL, $url);
         #curL_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
         curl_setopt($cHandle, CURLOPT_POST, 1);
-        curl_setopt($cHandle, CURLOPT_HTTPHEADER, array('Content-Type: text/xml', 'Content-length: '.strlen($Message)));
-        curl_setopt($cHandle, CURLOPT_POSTFIELDS, $Message);
+        curl_setopt($cHandle, CURLOPT_HTTPHEADER, array('Content-Type: text/xml', 'Content-length: '.strlen($message)));
+        curl_setopt($cHandle, CURLOPT_POSTFIELDS, $message);
         curl_setopt($cHandle, CURLOPT_RETURNTRANSFER, 1);
         $return = curl_exec($cHandle);
         curl_close($cHandle);
