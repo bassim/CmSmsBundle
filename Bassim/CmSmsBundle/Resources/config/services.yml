@@ -1,0 +1,11 @@
+parameters:
+    bassim_cm_sms.sms_service.class: "Bassim\CmSmsBundle\Services\CmSmsService"
+
+services:
+    bassim_cm_sms.sms_service:
+        class: "%bassim_cm_sms.sms_service.class%"
+        arguments:
+          - "%bassim.cm.sms.customer_id%"
+          - "%bassim.cm.sms.username%"
+          - "%bassim.cm.sms.password%"
+          - "%bassim.cm.sms.url%"

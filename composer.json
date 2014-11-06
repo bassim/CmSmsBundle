@@ -1,0 +1,25 @@
+{
+    "name": "bassim/cm-sms-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony2 Bundle for sending sms messages to cm telecom",
+    "keywords": ["sms", "bundle",  "symfony", "cm", "cm telecom", "comtelecom.com"],
+    "homepage": "http://github.com/Bassim/CmsSmsBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bas Simons",
+            "email": "bassim@xs4all.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "symfony/symfony": "2.3.*"
+    },
+    "autoload": {
+        "psr-0": { "Bassim\\CmSmsBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": ""
+}
